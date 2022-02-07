@@ -1,25 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: "Roboto", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+		Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	background: #fafbffff;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
+/* CSS HEX */
+--prussian-blue: #032d5fff;
+--alice-blue: #e6e9eeff;
+--cerulean-crayola: #01aad3ff;
+--celtic-blue: #006decff;
+--atomic-tangerine: #f09a6cff;
 
 /* CSS HEX */
---prussian-blue: #032D5Fff;
---alice-blue: #E6E9EEff;
---cerulean-crayola: #01AAD3ff;
---celtic-blue: #006DECff;
---atomic-tangerine: #F09A6Cff;
+--ghost-white: #fafbffff;
+--platinum: #e6e6e6ff;
+--united-nations-blue: #478ef7ff;
+--indigo-dye: #1b3f69ff;
+--united-nations-blue-2: #478ef7ff;
