@@ -6,7 +6,7 @@ export const SearchInput = () => {
 			<div className="inputContainer">
 				<input type="text" />
 				<div className="imgContainer">
-					<Image src={searchPic} width={30} height={30} />
+					<Image src={searchPic} width={25} height={25} />
 				</div>
 			</div>
 			<style jsx>
@@ -19,13 +19,15 @@ export const SearchInput = () => {
 						background: #e6e9ee;
 						border: none;
 						border-radius: 15px;
-						padding: 0.5rem 0.5rem 0.5rem 2rem;
+						padding: 0.3rem 0.3rem 0.3rem 2rem;
 						width: 15rem;
+						height: 2rem;
 					}
 
 					.imgContainer {
 						position: absolute;
-						top: 0.1rem;
+						top: 0.3rem;
+						left: 0.5rem;
 					}
 				`}
 			</style>

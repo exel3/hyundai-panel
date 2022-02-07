@@ -14,8 +14,11 @@ export const ButtonWithIcon = ({ src }: Prop) => {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					background: #e6e9ee;
+					background: #032d5fff;
 					border: none;
+					border-radius: 0.5rem;
+					width: 2rem;
+					height: 2rem;
 				}
 			`}</style>
 		</>
