@@ -6,10 +6,12 @@ import { getUser } from 'services/getUser'
 import { User } from 'types/global'
 import { Loading } from 'components/atoms/Loading'
 import { InputLabelFloat } from 'components/atoms/InputLabelFloat'
+import { useRouter } from 'next/router'
 
 const Login: NextPage = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
   const handleLogin = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
@@ -22,6 +24,7 @@ const Login: NextPage = () => {
         res => {
           console.log(res)
           setLoading(false)
+          router.push('dashboard')
         }
       )
       .catch(
@@ -36,12 +39,12 @@ const Login: NextPage = () => {
           <h1>Sign in</h1></div>
         <div className='formContainer'>
           <form onSubmit={handleLogin}>
-            <InputLabelFloat name={'email'} type={'email'} required={true} autoFocus={true}>Email Address *</InputLabelFloat>
-            <InputLabelFloat name={'pass'} type={'password'} required={true}>Password *</InputLabelFloat>
+            <InputLabelFloat name={'email'} type={'email'} disabled={loading} required={true} autoFocus={true}>Email Address *</InputLabelFloat>
+            <InputLabelFloat name={'pass'} type={'password'} disabled={loading} required={true}>Password *</InputLabelFloat>
             <div className='checkboxContainer'><input type="checkbox" name="remembercheck" className='checkbox' /><label htmlFor="remembercheck">Recordarme</label></div>
             {error && <div><p>{error}</p></div>}
             <div className='buttonContainer'>
-              <button>{loading ? '' : 'Login'}</button>
+              <button disabled={loading}>{loading ? '' : 'Login'}</button>
               {loading && <Loading size={'2rem'} />}
             </div>
           </form>
@@ -55,7 +58,7 @@ const Login: NextPage = () => {
        align-items:center;
        justify-content:center;
        width: 30rem;
-       height: 30rem;
+       height: 26rem;
        position: absolute;
        top: calc(50% - 15rem);
        left: calc(50% - 15rem);
@@ -88,7 +91,6 @@ const Login: NextPage = () => {
      .headerBox h1 {
       font-weight: 400;
     font-size: 1.5rem;
-    line-height: 1.334;
     letter-spacing: 0em;
      }
 
