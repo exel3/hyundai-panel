@@ -1,24 +1,28 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import loginPic from 'public/icons/login.svg'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { getUser } from 'services/getUser'
 import { User } from 'types/global'
 import { Loading } from 'components/atoms/Loading'
+import { InputLabelFloat } from 'components/atoms/InputLabelFloat'
 
 const Login: NextPage = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const handleLogin = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
     const userLogin: User = {
       email: e.target.email.value,
       password: e.target.pass.value
     }
-
     getUser(userLogin)
       .then(
-        res => console.log(res)
+        res => {
+          console.log(res)
+          setLoading(false)
+        }
       )
       .catch(
         e => setError(e)
@@ -32,19 +36,13 @@ const Login: NextPage = () => {
           <h1>Sign in</h1></div>
         <div className='formContainer'>
           <form onSubmit={handleLogin}>
-            <div className='labelInput'>
-              <label htmlFor="email" className='floatLabel'>Email Address *</label>
-              <input type="email" name="email" required autoFocus />
-            </div>
-            <div className='labelInput'>
-              <label htmlFor="pass" className='floatLabel'>Password *</label>
-              <input type="password" name="pass" required />
-            </div>
+            <InputLabelFloat name={'email'} type={'email'} required={true} autoFocus={true}>Email Address *</InputLabelFloat>
+            <InputLabelFloat name={'pass'} type={'password'} required={true}>Password *</InputLabelFloat>
             <div className='checkboxContainer'><input type="checkbox" name="remembercheck" className='checkbox' /><label htmlFor="remembercheck">Recordarme</label></div>
             {error && <div><p>{error}</p></div>}
-            <div>
+            <div className='buttonContainer'>
               <button>{loading ? '' : 'Login'}</button>
-              <Loading size={'2rem'} />
+              {loading && <Loading size={'2rem'} />}
             </div>
           </form>
         </div>
@@ -94,48 +92,19 @@ const Login: NextPage = () => {
     letter-spacing: 0em;
      }
 
-     .labelInput {
+     .buttonContainer {
        display: flex;
-       align-items: center;
-       min-width:10rem;
-       margin-bottom: 1rem;
-       gap:1rem;
-     }
-
-     .labelInput:hover input {
-       border: solid 1px black;
-     }
-
-     label {
-       user-select:none;
-       z-index: -1;
-     }
-
-     input {
-       border: solid 1px #d9dce0;
-       padding: 0.5rem;
-       border-radius: 0.3rem;
-       min-width: 26rem;
-       padding: 1rem;
-       background: transparent;
-     }
-
-     .checkbox {
-       min-width: 1rem;
-       cursor: pointer;
-     }
-
-     .floatLabel {
-       position:absolute;
-       left: 3rem;
-      color: rgba(0,0,0,0.6);
-     }
-
-     button {
+       justify-content:center;
+       align-items:center;
        position: absolute;
        bottom: 2rem;
        right: 2rem;
        width: calc(100% - 4rem);
+       height: 2.5rem;
+     }
+
+     button {
+       width: 100%;
        height: 2.5rem;
        background-color: #032D5Fff;
        color: white;

@@ -1,13 +1,14 @@
 type Prop = {
-    size?: string
+  size?: string
 }
-export const Loading = ({size = '2rem'}:Prop) => {
-  return  (
-  <>
-  <div></div>
-  <style jsx>
-      {`
+export const Loading = ({ size = '2rem' }: Prop) => {
+  return (
+    <>
+      <div></div>
+      <style jsx>
+        {`
       div {
+        position: absolute;
   border: 4px solid rgba(0,0,0,0.1);
   width: ${size};
   height: ${size};
@@ -28,7 +29,7 @@ export const Loading = ({size = '2rem'}:Prop) => {
 }
 
       `}
-  </style>
-  </>
+      </style>
+    </>
   )
 };
