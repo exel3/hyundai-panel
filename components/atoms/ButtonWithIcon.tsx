@@ -2,11 +2,12 @@ import Image from "next/image";
 
 type Prop = {
 	src: string;
+	handleClick: Function;
 };
-export const ButtonWithIcon = ({ src }: Prop) => {
+export const ButtonWithIcon = ({ src, handleClick }: Prop) => {
 	return (
 		<>
-			<button>
+			<button onClick={() => handleClick()}>
 				<Image src={src} width={30} height={30} />
 			</button>
 			<style jsx>{`
@@ -19,6 +20,7 @@ export const ButtonWithIcon = ({ src }: Prop) => {
 					border-radius: 0.5rem;
 					width: 2rem;
 					height: 2rem;
+					cursor: pointer;
 				}
 			`}</style>
 		</>
