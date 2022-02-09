@@ -3,7 +3,7 @@ import Image from "next/image";
 import loginPic from "public/icons/login.svg";
 import React, { useState } from "react";
 import { getUser } from "services/getUser";
-import { User } from "types/global";
+import { user } from "types/global";
 import { Loading } from "components/atoms/Loading";
 import { InputLabelFloat } from "components/atoms/InputLabelFloat";
 import { useRouter } from "next/router";
@@ -15,7 +15,7 @@ const Login: NextPage = () => {
 	const handleLogin = (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
-		const userLogin: User = {
+		const userLogin: user = {
 			email: e.target.email.value,
 			password: e.target.pass.value,
 		};
