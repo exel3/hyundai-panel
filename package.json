@@ -1,34 +1,36 @@
 {
-  "name": "hyundai-panel",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ./",
-    "lint:fix": "eslint ./ --fix"
-  },
-  "dependencies": {
-    "next": "12.0.10",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "17.0.15",
-    "@types/react": "17.0.39",
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
-    "@typescript-eslint/parser": "^5.10.2",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "12.0.10",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.5.1",
-    "typescript": "4.5.5"
-  }
+	"name": "hyundai-panel",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint ./",
+		"lint:fix": "eslint ./ --fix",
+		"test": "jest"
+	},
+	"dependencies": {
+		"next": "12.0.10",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
+	},
+	"devDependencies": {
+		"@types/node": "17.0.15",
+		"@types/react": "17.0.39",
+		"@typescript-eslint/eslint-plugin": "^5.10.2",
+		"@typescript-eslint/parser": "^5.10.2",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^8.8.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-next": "12.0.10",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"jest": "^27.5.1",
+		"prettier": "^2.5.1",
+		"typescript": "4.5.5"
+	}
 }

@@ -3,8 +3,9 @@ import Image from "next/image";
 type Prop = {
 	src: string;
 	handleClick: Function;
+	rotate?: string;
 };
-export const ButtonWithIcon = ({ src, handleClick }: Prop) => {
+export const ButtonWithIcon = ({ src, handleClick, rotate = "" }: Prop) => {
 	return (
 		<>
 			<button onClick={() => handleClick()}>
