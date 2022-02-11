@@ -8,7 +8,7 @@ type Prop = {
 export const ButtonWithIcon = ({ src, handleClick, rotate = "" }: Prop) => {
 	return (
 		<>
-			<button onClick={() => handleClick()}>
+			<button className="rotateX" onClick={() => handleClick()}>
 				<Image src={src} width={30} height={30} />
 			</button>
 			<style jsx>{`
