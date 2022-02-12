@@ -1,3 +1,14 @@
 export const DashboardIndex = () => {
-	return <div>Dashboard</div>;
+	return (
+		<>
+			<p>
+				Dashboardeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+			</p>
+			<style jsx>{`
+				p {
+					overflow-wrap: break-word;
+				}
+			`}</style>
+		</>
+	);
 };

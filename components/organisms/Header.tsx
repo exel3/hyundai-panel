@@ -2,7 +2,10 @@ import { ButtonWithIcon } from "components/atoms/ButtonWithIcon";
 import { SearchInput } from "components/atoms/SearchInput";
 import notification from "public/icons/notificationPic.svg";
 import add from "public/icons/addPic.svg";
-export const Header = () => {
+import React from "react";
+const Header = () => {
+	const handleNotification = () => {};
+	const handleAdd = () => {};
 	return (
 		<>
 			<header>
@@ -10,8 +13,8 @@ export const Header = () => {
 					<SearchInput />
 				</div>
 				<div className="buttonsContainer">
-					<ButtonWithIcon src={notification} />
-					<ButtonWithIcon src={add} />
+					<ButtonWithIcon src={notification} handleClick={handleNotification} />
+					<ButtonWithIcon src={add} handleClick={handleAdd} />
 				</div>
 			</header>
 			<style jsx>{`
@@ -34,3 +37,5 @@ export const Header = () => {
 		</>
 	);
 };
+
+export default React.memo(Header);

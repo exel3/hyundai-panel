@@ -1,11 +1,12 @@
 import { ItemList } from "components/atoms/ItemList";
+import React from "react";
 import { itemlist } from "types/global";
 
 type Prop = {
 	items: Array<itemlist>;
 };
 
-export const MenuList = ({ items }: Prop) => {
+const MenuList = ({ items }: Prop) => {
 	return (
 		<>
 			<ul>
@@ -27,3 +28,7 @@ export const MenuList = ({ items }: Prop) => {
 		</>
 	);
 };
+
+export default React.memo(MenuList, (prevProps, nextProps) => {
+	return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+});

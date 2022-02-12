@@ -1,5 +1,5 @@
-import { Header } from "components/organisms/Header";
-import { AsideMenu } from "components/organisms/AsideMenu";
+import Header from "components/organisms/Header";
+import AsideMenu from "components/organisms/AsideMenu";
 import { useState } from "react";
 
 type Prop = {
@@ -18,8 +18,14 @@ export const DefaultLayout = ({ children }: Prop) => {
 				</article>
 				<article className="header">
 					<Header />
-					<div className="defaultLayoutContent">{children}</div>
 				</article>
+				<div
+					className={
+						compressedMode ? "compressedLayoutContent" : "defaultLayoutContent"
+					}
+				>
+					{children}
+				</div>
 			</section>
 			<style jsx>
 				{`
@@ -51,8 +57,30 @@ export const DefaultLayout = ({ children }: Prop) => {
 						width: calc(100% - 20rem);
 					}
 
-					.asideCompressed + .defaultLayoutContent {
-						padding: 10rem;
+					.defaultLayoutContent {
+						position: fixed;
+						top: 5rem;
+						left: 20rem;
+						transform: translate(0);
+						height: 5rem;
+						width: calc(100% - 20rem);
+						animation: moveForward 0.5s ease;
+						z-index: -1;
+						box-sizing: border-box;
+						padding: 1rem;
+					}
+
+					.compressedLayoutContent {
+						position: fixed;
+						top: 5rem;
+						left: 20rem;
+						transform: translate(-18rem);
+						height: calc(100% - 5rem);
+						width: calc(100% - 2rem);
+						animation: moveBack 0.5s ease;
+						box-sizing: border-box;
+						padding: 1rem;
+						z-index: -1;
 					}
 
 					@keyframes moveForward {

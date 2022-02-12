@@ -1,14 +1,14 @@
-import { MenuList } from "components/molecules/MenuList";
+import MenuList from "components/molecules/MenuList";
 import React, { useState } from "react";
-import Image from "next/image";
 import logoPic from "public/icons/hyundaiLogo.png";
 import arrowBackPic from "public/icons/arrowBack.svg";
 import { ButtonWithIcon } from "components/atoms/ButtonWithIcon";
+import ImageWrapper from "components/atoms/ImageWrapper";
 
 type Prop = {
 	handleAsideWidth: Function;
 };
-export const AsideMenu = ({ handleAsideWidth }: Prop) => {
+const AsideMenu = ({ handleAsideWidth }: Prop) => {
 	const mainlistArray = [
 		{ href: "dashboard", title: "Informes de Auditoria" },
 		{ href: "dashboard", title: "Instalaciones HMES" },
@@ -33,7 +33,7 @@ export const AsideMenu = ({ handleAsideWidth }: Prop) => {
 		<>
 			<aside className={compressedMode ? "asideCompressed" : "asideNormal"}>
 				<div className="logo">
-					<Image src={logoPic} width={90} height={60} />
+					<ImageWrapper pic={logoPic} />
 				</div>
 				<div className="asideBody">
 					<div className="list">
@@ -41,7 +41,11 @@ export const AsideMenu = ({ handleAsideWidth }: Prop) => {
 					</div>
 					<div className="mediumLine">
 						<div className="buttonContainer">
-							<ButtonWithIcon src={arrowBackPic} handleClick={handleMode} />
+							<ButtonWithIcon
+								src={arrowBackPic}
+								handleClick={handleMode}
+								rotate={compressedMode ? 180 : 0}
+							/>
 						</div>
 					</div>
 					<div className="list">
@@ -88,7 +92,7 @@ export const AsideMenu = ({ handleAsideWidth }: Prop) => {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					height: 5rem;
+					height: 6rem;
 				}
 
 				.mediumLine {
@@ -109,3 +113,5 @@ export const AsideMenu = ({ handleAsideWidth }: Prop) => {
 		</>
 	);
 };
+
+export default React.memo(AsideMenu);
