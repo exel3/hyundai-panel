@@ -1,8 +1,20 @@
-import type { AppProps } from "next/app";
 import { fonts } from "styles/theme";
-function MyApp({ Component, pageProps }: AppProps) {
-	console.log(pageProps);
-	return (
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
+
+type NextPageWithLayout = NextPage & {
+	getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+	Component: NextPageWithLayout;
+};
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+	const getLayout = Component.getLayout ?? ((page) => page);
+
+	return getLayout(
 		<>
 			<Component {...pageProps} />
 			<style jsx global>
@@ -25,7 +37,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 						--platinum: #e6e6e6ff;
 						--united-nations-blue: #478ef7ff;
 						--indigo-dye: #1b3f69ff;
-						--united-nations-blue-2: #478ef7ff;
 					}
 					a {
 						color: inherit;
@@ -40,5 +51,3 @@ function MyApp({ Component, pageProps }: AppProps) {
 		</>
 	);
 }
-
-export default MyApp;

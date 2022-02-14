@@ -6,4 +6,5 @@ export type user = {
 export type itemlist = {
 	title: string;
 	href: string;
+	subs?: Array<itemlist>;
 };

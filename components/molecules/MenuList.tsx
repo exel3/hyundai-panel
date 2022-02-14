@@ -11,17 +11,12 @@ const MenuList = ({ items }: Prop) => {
 		<>
 			<ul>
 				{items.map((i) => (
-					<ItemList key={i.title} title={i.title} href={i.href} />
+					<ItemList key={i.title} title={i.title} href={i.href} subs={i.subs} />
 				))}
 			</ul>
 			<style jsx>{`
 				ul {
-					display: flex;
-					align-items: start;
-					justify-content: space-between;
-					gap: 1rem;
-					flex-direction: column;
-					height: 100%;
+					display: block;
 					width: 100%;
 				}
 			`}</style>

@@ -1,10 +1,10 @@
 import DefaultLayout from "components/layouts/DefaultLayout";
 import type { ReactElement } from "react";
 
-export default function Dashboard() {
-	return <div>Dashboard</div>;
+export default function Estandares() {
+	return <div>Estandares</div>;
 }
 
-Dashboard.getLayout = function getLayout(page: ReactElement) {
+Estandares.getLayout = function getLayout(page: ReactElement) {
 	return <DefaultLayout>{page}</DefaultLayout>;
 };
