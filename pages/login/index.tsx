@@ -25,7 +25,11 @@ const Login: NextPage = () => {
 				setLoading(false);
 				router.push("dashboard");
 			})
-			.catch((e) => setError(e));
+			.catch((e) => {
+				console.log(e);
+				setError(e);
+				setLoading(false);
+			});
 	};
 	return (
 		<>

@@ -1,14 +1,37 @@
-import { User } from '../types/global'
-export const getUser = ({ email, password }: User) => {
+import { user } from "types/global";
+import { host } from "utils/apiUtils";
 
-  return new Promise((resolve, reject) => {
-    setTimeout(function () {
-      resolve({
-        status: true,
-        info: 'Login '
-      })
-    }, 2000);
-  });
+export const getUser = ({ email, password }: user): Promise<object | void> => {
+	const options = {
+		method: "POST",
+		body: JSON.stringify({
+			username: email,
+			password,
+		}),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
+	const request = new Request(`${host}/api/admin/login`, options);
 
+	return fetch(request)
+		.then((res) => {
+			if (!res.ok) throw new Error(res.status);
 
-}
+			return res.json();
+		})
+		.then((res) => {
+			res;
+		})
+		.catch((e) => {
+			console.log(e);
+			switch (e) {
+				case 401: {
+					return Promise.reject("Usuario o password incorrectos.");
+				}
+				default: {
+					return Promise.reject("Error de conexion");
+				}
+			}
+		});
+};
