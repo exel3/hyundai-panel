@@ -7,6 +7,7 @@ type Prop = {
 	required?: boolean;
 	disabled?: boolean;
 	autoFocus?: boolean;
+	autoComplete?: boolean;
 };
 
 export const InputLabelFloat = ({
@@ -16,6 +17,7 @@ export const InputLabelFloat = ({
 	required = false,
 	disabled = false,
 	autoFocus = false,
+	autoComplete = false,
 }: Prop) => {
 	const [mode, setMode] = useState(false);
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +35,7 @@ export const InputLabelFloat = ({
 					disabled={disabled}
 					autoFocus={autoFocus}
 					onChange={handleInput}
+					autoComplete={`${autoComplete}`}
 				/>
 				<label htmlFor="email" className={!mode ? "floatLabel" : "staticLabel"}>
 					{children}

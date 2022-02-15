@@ -48,6 +48,7 @@ const Login: NextPage = () => {
 							disabled={loading}
 							required={true}
 							autoFocus={true}
+							autoComplete={true}
 						>
 							Email Address *
 						</InputLabelFloat>
@@ -56,6 +57,7 @@ const Login: NextPage = () => {
 							type={"password"}
 							disabled={loading}
 							required={true}
+							autoComplete={true}
 						>
 							Password *
 						</InputLabelFloat>
