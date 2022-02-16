@@ -39,6 +39,11 @@ export const ItemList = ({ title, href, subs }: itemlist) => {
 					line-height: 2rem;
 					height: 100%;
 					border-radius: 0.5rem;
+					color: rgba(0, 0, 0, 0.8);
+				}
+
+				a {
+					color: rgba(0, 0, 0, 0.8);
 				}
 
 				.subs {

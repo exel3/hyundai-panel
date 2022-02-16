@@ -14,6 +14,10 @@ const AsideMenu = ({ handleAsideWidth }: Prop) => {
 			href: "/parametrizacion",
 			title: "BBDD Parametrizacion",
 			subs: [
+				{
+					href: "/parametrizacion/administradores",
+					title: "Gestor de Administradores",
+				},
 				{ href: "/parametrizacion/estandares", title: "Maestro de Estandares" },
 				{
 					href: "/parametrizacion/dimensionamientos",

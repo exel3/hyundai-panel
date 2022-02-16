@@ -70,7 +70,7 @@ const Login: NextPage = () => {
 							<label htmlFor="remembercheck">Recordarme</label>
 						</div>
 						{error && (
-							<div>
+							<div className="errorContainer">
 								<p>{error}</p>
 							</div>
 						)}
@@ -89,12 +89,14 @@ const Login: NextPage = () => {
 						align-items: center;
 						justify-content: center;
 						width: 30rem;
-						height: 26rem;
+						height: 30rem;
 						position: absolute;
 						top: calc(50% - 15rem);
 						left: calc(50% - 15rem);
 						border: solid 1px #d9dce0;
 						border-radius: 5px;
+						background-color: white;
+						z-index: -2;
 					}
 
 					.headerBox {
@@ -151,6 +153,10 @@ const Login: NextPage = () => {
 
 					button:hover {
 						box-shadow: 1px 1px 8px -2px #032d5fff;
+					}
+
+					.errorContainer {
+						color: rgba(200, 0, 0, 1);
 					}
 				`}
 			</style>

@@ -1,24 +1,20 @@
-import { user } from "types/global";
+import { admin } from "types/global";
 import { host } from "utils/apiUtils";
 
 interface customError extends Error {
 	statusCode?: number;
 }
 
-export const getUser = async ({ email, password }: user): Promise<object> => {
+export const getAdmins = async (): Promise<admin[]> => {
 	const options: RequestInit = {
-		method: "POST",
+		method: "GET",
 		mode: "cors",
 		credentials: "same-origin",
-		body: JSON.stringify({
-			user: email,
-			password,
-		}),
 		headers: {
 			"Content-Type": "application/json",
 		},
 	};
-	const request = new Request(`${host}/api/admin/login`, options);
+	const request = new Request(`${host}/api/admin`, {});
 
 	return fetch(request)
 		.then((res) => {
@@ -29,7 +25,7 @@ export const getUser = async ({ email, password }: user): Promise<object> => {
 			}
 			return res.json();
 		})
-		.then((res) => res)
+		.then((res) => res.data.admins)
 		.catch((e) => {
 			switch (e.statusCode) {
 				case 401: {

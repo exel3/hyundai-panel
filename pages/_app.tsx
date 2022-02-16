@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 					}
 
 					html {
-						--prussian-blue: #032d5fff;
+						--main-blue: #032d5fff;
 						--alice-blue: #e6e9eeff;
 						--cerulean-crayola: #01aad3ff;
 						--celtic-blue: #006decff;
