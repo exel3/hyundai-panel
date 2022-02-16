@@ -1,5 +1,4 @@
 import { admin } from "types/global";
-import { host } from "utils/apiUtils";
 
 interface customError extends Error {
 	statusCode?: number;
@@ -14,7 +13,7 @@ export const getAdmins = async (): Promise<admin[]> => {
 			"Content-Type": "application/json",
 		},
 	};
-	const request = new Request(`${host}/api/admin`, {});
+	const request = new Request(`/api/admins`, options);
 
 	return fetch(request)
 		.then((res) => {
@@ -27,6 +26,7 @@ export const getAdmins = async (): Promise<admin[]> => {
 		})
 		.then((res) => res.data.admins)
 		.catch((e) => {
+			console.log(e);
 			switch (e.statusCode) {
 				case 401: {
 					return Promise.reject("Usuario o password incorrectos.");

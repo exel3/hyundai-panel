@@ -1,5 +1,4 @@
 import { user } from "types/global";
-import { host } from "utils/apiUtils";
 
 interface customError extends Error {
 	statusCode?: number;
@@ -18,7 +17,7 @@ export const getUser = async ({ email, password }: user): Promise<object> => {
 			"Content-Type": "application/json",
 		},
 	};
-	const request = new Request(`${host}/api/admin/login`, options);
+	const request = new Request(`/api/login`, options);
 
 	return fetch(request)
 		.then((res) => {
@@ -27,6 +26,7 @@ export const getUser = async ({ email, password }: user): Promise<object> => {
 				error.statusCode = res.status;
 				throw error;
 			}
+			console.log(res);
 			return res.json();
 		})
 		.then((res) => res)

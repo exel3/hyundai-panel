@@ -1,3 +1,5 @@
+import { CeldaTable } from "components/atoms/CeldaTable";
+import { TableRow } from "components/atoms/TableRow";
 import { Title } from "components/atoms/Title";
 import Table from "components/molecules/Table";
 import { useEffect, useState } from "react";
@@ -17,12 +19,14 @@ export const AdministradoresTemplate = () => {
 			<Title>Administradores</Title>
 			<Table titles={titles}>
 				{admins.map((a) => (
-					<tr key={a._id}>
-						<td>{a.names}</td>
-						<td>{a.surnames}</td>
-						<td>{a.emailAddress}</td>
-						<td>{a.userName}</td>
-					</tr>
+					<TableRow key={a._id}>
+						<>
+							<CeldaTable>{a.names}</CeldaTable>
+							<CeldaTable>{a.surnames}</CeldaTable>
+							<CeldaTable>{a.emailAddress}</CeldaTable>
+							<CeldaTable>{a.userName}</CeldaTable>
+						</>
+					</TableRow>
 				))}
 			</Table>
 		</>

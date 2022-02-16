@@ -14,21 +14,7 @@ const Table = ({ titles, children }: Props) => {
 						))}
 					</tr>
 				</thead>
-				<tbody>
-					{children}
-					<tr>
-						<td>Emil</td>
-						<td>Tobias</td>
-						<td>Linus</td>
-						<td>Linus</td>
-					</tr>
-					<tr>
-						<td>16</td>
-						<td>14</td>
-						<td>10</td>
-						<td>Linus</td>
-					</tr>
-				</tbody>
+				<tbody>{children}</tbody>
 			</table>
 			<style jsx>
 				{`
@@ -36,7 +22,7 @@ const Table = ({ titles, children }: Props) => {
 						width: 100%;
 						border-collapse: collapse;
 						border-radius: 0.8rem;
-						border: solid 2px red;
+						border: solid 2px;
 						overflow: hidden;
 					}
 					thead tr {
@@ -49,11 +35,6 @@ const Table = ({ titles, children }: Props) => {
 					}
 
 					th {
-						padding: 0.3rem;
-					}
-
-					td {
-						border: solid 1px gray;
 						padding: 0.3rem;
 					}
 				`}
