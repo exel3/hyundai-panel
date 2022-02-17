@@ -1,14 +1,11 @@
 import DefaultLayout from "components/layouts/DefaultLayout";
 import { AdministradoresTemplate } from "components/templates/AdministradoresTemplate";
 import { GetServerSideProps } from "next";
+import { ReactElement } from "react";
 import getToken from "utils/server/getToken";
 
 export default function Administradores() {
-	return (
-		<DefaultLayout>
-			<AdministradoresTemplate></AdministradoresTemplate>
-		</DefaultLayout>
-	);
+	return <AdministradoresTemplate></AdministradoresTemplate>;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -23,4 +20,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			permanent: false,
 		},
 	};
+};
+
+Administradores.getLayout = function getLayout(page: ReactElement) {
+	return <DefaultLayout>{page}</DefaultLayout>;
 };
