@@ -5,6 +5,7 @@ import add from "public/icons/addPic.svg";
 import React, { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSearchValue } from "reducers/searchReducer";
+
 const Header = () => {
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();

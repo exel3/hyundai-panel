@@ -37,7 +37,10 @@ export const InputLabelFloat = ({
 					onChange={handleInput}
 					autoComplete={`${autoComplete}`}
 				/>
-				<label htmlFor="email" className={!mode ? "floatLabel" : "staticLabel"}>
+				<label
+					htmlFor={"name"}
+					className={!mode ? "floatLabel" : "staticLabel"}
+				>
 					{children}
 				</label>
 			</div>

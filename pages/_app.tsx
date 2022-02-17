@@ -37,7 +37,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 							--cerulean-crayola: #01aad3ff;
 							--celtic-blue: #006decff;
 							--atomic-tangerine: #f09a6cff;
-							--ghost-white: #fafbffff;
+							--background: #fafbffff;
 							--platinum: #e6e6e6ff;
 							--united-nations-blue: #478ef7ff;
 							--indigo-dye: #1b3f69ff;
