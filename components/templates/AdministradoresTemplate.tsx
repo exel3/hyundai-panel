@@ -2,6 +2,7 @@ import { CeldaTable } from "components/atoms/CeldaTable";
 import { TableRow } from "components/atoms/TableRow";
 import { Title } from "components/atoms/Title";
 import Table from "components/molecules/Table";
+import { useFilter } from "hooks/useFilter";
 import { useEffect, useState } from "react";
 import { getAdmins } from "services/getAdmins";
 import { admin } from "types/global";
@@ -9,6 +10,7 @@ import { admin } from "types/global";
 export const AdministradoresTemplate = () => {
 	const titles = ["Nombre", "Apellido", "Email", "Username"];
 	const [admins, setAdmins] = useState<admin[]>([]);
+	const adminsFilter = useFilter(admins);
 	useEffect(() => {
 		getAdmins()
 			.then((res) => setAdmins(res))
@@ -18,7 +20,7 @@ export const AdministradoresTemplate = () => {
 		<>
 			<Title>Administradores</Title>
 			<Table titles={titles}>
-				{admins.map((a) => (
+				{adminsFilter.map((a) => (
 					<TableRow key={a._id}>
 						<>
 							<CeldaTable>{a.names}</CeldaTable>

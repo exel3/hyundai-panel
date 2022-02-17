@@ -1,10 +1,13 @@
 import Image from "next/image";
 import searchPic from "public/icons/searchPic.svg";
-export const SearchInput = () => {
+type Prop = {
+	handleSearch: Function;
+};
+export const SearchInput = ({ handleSearch }: Prop) => {
 	return (
 		<>
 			<div className="inputContainer">
-				<input type="text" />
+				<input type="text" onChange={(e) => handleSearch(e)} />
 				<div className="imgContainer">
 					<Image src={searchPic} width={25} height={25} />
 				</div>

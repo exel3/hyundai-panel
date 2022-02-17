@@ -1,10 +1,11 @@
 import DefaultLayout from "components/layouts/DefaultLayout";
-import type { ReactElement } from "react";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-	return <div>Dashboard</div>;
+	const state = useSelector((state) => state);
+	return (
+		<DefaultLayout>
+			<div>{state}</div>
+		</DefaultLayout>
+	);
 }
-
-Dashboard.getLayout = function getLayout(page: ReactElement) {
-	return <DefaultLayout>{page}</DefaultLayout>;
-};
