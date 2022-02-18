@@ -26,4 +26,28 @@ export default function admins(req: NextApiRequest, res: NextApiResponse) {
 			res.status(401).json({ Error: "no autorizado" });
 		}
 	}
+
+	if (req.method === "POST") {
+		const token = getToken(req, res);
+		const admin = req.body;
+		if (token) {
+			const options: RequestInit = {
+				method: "POST",
+				mode: "cors",
+				credentials: "same-origin",
+				body: JSON.stringify(admin),
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: token,
+				},
+			};
+			const request = new Request(path, options);
+			fetch(request)
+				.then((response) => response.json())
+				.then((response) => res.json(response))
+				.catch((e) => res.json(e));
+		} else {
+			res.status(401).json({ Error: "no autorizado" });
+		}
+	}
 }

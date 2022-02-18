@@ -4,6 +4,7 @@ type Prop = {
 	children: string;
 	name: string;
 	type: string;
+	width?: string;
 	required?: boolean;
 	disabled?: boolean;
 	autoFocus?: boolean;
@@ -14,6 +15,7 @@ export const InputLabelFloat = ({
 	children,
 	name,
 	type,
+	width = "26rem",
 	required = false,
 	disabled = false,
 	autoFocus = false,
@@ -53,6 +55,7 @@ export const InputLabelFloat = ({
 						min-width: 10rem;
 						margin-bottom: 1rem;
 						gap: 1rem;
+						z-index: 1;
 					}
 
 					.labelInput:hover input {
@@ -87,7 +90,7 @@ export const InputLabelFloat = ({
 						border: solid 1px #d9dce0;
 						padding: 0.5rem;
 						border-radius: 0.3rem;
-						min-width: 26rem;
+						min-width: ${width};
 						padding: 1rem;
 						background: transparent;
 					}

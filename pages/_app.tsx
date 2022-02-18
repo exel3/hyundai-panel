@@ -42,6 +42,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 								--platinum: #e6e6e6ff;
 								--united-nations-blue: #478ef7ff;
 								--indigo-dye: #1b3f69ff;
+								--border-color: #d8d9db;
 							}
 							a {
 								color: inherit;

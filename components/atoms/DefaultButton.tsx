@@ -2,11 +2,12 @@ import React from "react";
 type Prop = {
 	children: string;
 	width: string;
+	disabled: boolean;
 };
-export const DefaultButton = ({ children, width }: Prop) => {
+export const DefaultButton = ({ children, width, disabled }: Prop) => {
 	return (
 		<>
-			<button>{children}</button>
+			<button disabled={disabled}>{children}</button>
 			<style jsx>{`
 				button {
 					width: ${width};

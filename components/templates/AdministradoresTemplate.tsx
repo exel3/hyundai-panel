@@ -11,6 +11,8 @@ import add from "public/icons/addPic.svg";
 import { InputLabelFloat } from "components/atoms/InputLabelFloat";
 import { AddForm } from "components/molecules/AddForm";
 import { DefaultButton } from "components/atoms/DefaultButton";
+import { postAdmin } from "services/postAdmin";
+import { Loading } from "components/atoms/Loading";
 
 export const AdministradoresTemplate = () => {
 	const titles = ["Nombre", "Apellido", "Email", "Username"];
@@ -19,40 +21,57 @@ export const AdministradoresTemplate = () => {
 	const [isAddMode, setAddMode] = useState(false);
 	const adminsFilter = useFilter(admins);
 
+	const updateList = () => {
+		setLoading(true);
+		getAdmins()
+			.then((res) => {
+				setAdmins(res);
+				setLoading(false);
+			})
+			.catch((e) => console.log(e));
+	};
+
 	const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const { names, surnames, emailAddress, password } = e.target;
-		const newAdmin = {
+		const { names, surnames, emailAddress, userName, password } = e.target;
+		const newAdmin: admin = {
 			names: names.value,
 			surnames: surnames.value,
 			emailAddress: emailAddress.value,
+			userName: userName.value,
 			password: password.value,
 		};
 		console.log(newAdmin);
+		postAdmin(newAdmin).then((res) => updateList());
 	};
 
 	const handleAdd = () => {
 		setAddMode((prevState) => !prevState);
 	};
 	useEffect(() => {
-		getAdmins()
-			.then((res) => setAdmins(res))
-			.catch((e) => console.log(e));
+		updateList();
 	}, []);
+
+	if (admins.length === 0) return <Loading />;
 	return (
 		<>
 			<div className="header">
 				<Title>Administradores</Title>
-				<ButtonWithIcon src={add} handleClick={handleAdd} />
+				<ButtonWithIcon
+					src={add}
+					handleClick={handleAdd}
+					rotate={isAddMode ? 45 : 0}
+				/>
 			</div>
 			<div className="addContainer">
 				{isAddMode && (
-					<AddForm handleSubmit={handleSubmit}>
+					<AddForm title="Nuevo administrador" handleSubmit={handleSubmit}>
 						<div>
 							<InputLabelFloat
 								name="names"
 								type="text"
 								required={true}
+								width="100%"
 								autoFocus={true}
 								disabled={loading}
 							>
@@ -62,40 +81,42 @@ export const AdministradoresTemplate = () => {
 								name="surnames"
 								type="text"
 								required={true}
-								autoFocus={true}
+								width="100%"
 								disabled={loading}
 							>
 								Apellido
 							</InputLabelFloat>
 							<InputLabelFloat
-								name="email"
+								name="emailAddress"
 								type="email"
 								required={true}
-								autoFocus={true}
+								width="100%"
 								disabled={loading}
 							>
 								Email
 							</InputLabelFloat>
 							<InputLabelFloat
+								name="userName"
+								type="text"
+								required={true}
+								width="100%"
+								disabled={loading}
+							>
+								Username
+							</InputLabelFloat>
+							<InputLabelFloat
 								name="password"
 								type="password"
 								required={true}
-								autoFocus={true}
+								width="100%"
 								disabled={loading}
 							>
 								Password
 							</InputLabelFloat>
 						</div>
-						<InputLabelFloat
-							name="password"
-							type="password"
-							required={true}
-							autoFocus={true}
-							disabled={loading}
-						>
-							Password
-						</InputLabelFloat>
-						<DefaultButton width="5rem">Agregar</DefaultButton>
+						<DefaultButton width="5rem" disabled={loading}>
+							Agregar
+						</DefaultButton>
 					</AddForm>
 				)}
 			</div>

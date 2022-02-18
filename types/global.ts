@@ -10,7 +10,7 @@ export type itemlist = {
 };
 
 export type admin = {
-	_id: string;
+	_id?: string;
 	names: string;
 	surnames: string;
 	emailAddress: string;
