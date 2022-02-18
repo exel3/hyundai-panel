@@ -64,11 +64,12 @@ const DefaultLayout = ({ children }: Prop) => {
 						top: 5rem;
 						left: 20rem;
 						transform: translate(0);
-						height: 5rem;
 						width: calc(100% - 20rem);
 						z-index: -1;
 						box-sizing: border-box;
 						padding: 1rem;
+						overflow-y: auto;
+						height: 100%;
 					}
 
 					.asideNormal ~ div {
@@ -76,12 +77,13 @@ const DefaultLayout = ({ children }: Prop) => {
 						top: 5rem;
 						left: 20rem;
 						transform: translate(0);
-						height: 5rem;
 						width: calc(100% - 20rem);
 						animation: moveForward 0.5s ease;
 						z-index: -1;
 						box-sizing: border-box;
 						padding: 1rem;
+						overflow-y: auto;
+						height: 100%;
 					}
 
 					.asideCompressed ~ div {

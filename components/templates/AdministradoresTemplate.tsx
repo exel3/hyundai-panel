@@ -141,6 +141,10 @@ export const AdministradoresTemplate = () => {
 					justify-content: start;
 					gap: 1rem;
 				}
+
+				.list {
+					height: 100%;
+				}
 			`}</style>
 		</>
 	);
