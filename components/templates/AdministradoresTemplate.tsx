@@ -26,6 +26,7 @@ export const AdministradoresTemplate = () => {
 		getAdmins()
 			.then((res) => {
 				setAdmins(res);
+				setAddMode(false);
 				setLoading(false);
 			})
 			.catch((e) => console.log(e));
@@ -48,6 +49,7 @@ export const AdministradoresTemplate = () => {
 	const handleAdd = () => {
 		setAddMode((prevState) => !prevState);
 	};
+
 	useEffect(() => {
 		updateList();
 	}, []);

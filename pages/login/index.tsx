@@ -61,14 +61,6 @@ const Login: NextPage = () => {
 						>
 							Password *
 						</InputLabelFloat>
-						<div className="checkboxContainer">
-							<input
-								type="checkbox"
-								name="remembercheck"
-								className="checkbox"
-							/>
-							<label htmlFor="remembercheck">Recordarme</label>
-						</div>
 						{error && (
 							<div className="errorContainer">
 								<p>{error}</p>
