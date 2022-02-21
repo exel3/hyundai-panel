@@ -1,9 +1,10 @@
 import { fonts } from "styles/theme";
 import type { ReactElement, ReactNode } from "react";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import store from "redux/store";
+import getToken from "utils/server/getToken";
 
 type NextPageWithLayout = NextPage & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -59,3 +60,17 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 		</Provider>
 	);
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { req, res } = context;
+	const token = getToken(req, res);
+
+	if (token) return { props: {} };
+
+	return {
+		redirect: {
+			destination: "/login",
+			permanent: false,
+		},
+	};
+};

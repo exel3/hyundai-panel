@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { host } from "utils/apiUtils";
 import Cookies from "cookies";
 
-export default function login(req: NextApiRequest, res: NextApiResponse) {
+export default async function login(req: NextApiRequest, res: NextApiResponse) {
 	console.log(req.method === "POST");
 	if (req.method === "POST") {
 		const cookie = new Cookies(req, res);
@@ -21,7 +21,7 @@ export default function login(req: NextApiRequest, res: NextApiResponse) {
 		};
 		let firstResponse: Response;
 		const request = new Request(`${host}/api/admin/login`, options);
-		fetch(request)
+		await fetch(request)
 			.then((response) => {
 				firstResponse = response;
 				return response.json();

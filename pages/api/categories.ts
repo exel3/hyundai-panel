@@ -2,13 +2,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { host } from "utils/apiUtils";
 import getToken from "utils/server/getToken";
 
-export default async function admins(
+export default async function categories(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const path = `${host}/api/admin`;
+	console.log("entro en api/categories");
+	const path = `${host}/api/category`;
 	const token = getToken(req, res);
-	console.log(token);
 	if (req.method === "GET") {
 		if (token) {
 			const options: RequestInit = {
@@ -31,13 +31,13 @@ export default async function admins(
 	}
 
 	if (req.method === "POST") {
-		const admin = req.body;
+		const category = req.body;
 		if (token) {
 			const options: RequestInit = {
 				method: "POST",
 				mode: "cors",
 				credentials: "same-origin",
-				body: JSON.stringify(admin),
+				body: JSON.stringify(category),
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: token,

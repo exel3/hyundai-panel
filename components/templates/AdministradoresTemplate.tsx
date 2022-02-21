@@ -5,13 +5,13 @@ import { Title } from "components/atoms/Title";
 import Table from "components/molecules/Table";
 import { useFilter } from "hooks/useFilter";
 import { useEffect, useState } from "react";
-import { getAdmins } from "services/getAdmins";
+import { getAdmins } from "services/admins/getAdmins";
 import { admin } from "types/global";
 import add from "public/icons/addPic.svg";
 import { InputLabelFloat } from "components/atoms/InputLabelFloat";
 import { AddForm } from "components/molecules/AddForm";
 import { DefaultButton } from "components/atoms/DefaultButton";
-import { postAdmin } from "services/postAdmin";
+import { postAdmin } from "services/admins/postAdmin";
 import { Loading } from "components/atoms/Loading";
 
 export const AdministradoresTemplate = () => {

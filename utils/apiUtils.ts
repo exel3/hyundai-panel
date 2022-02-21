@@ -1,1 +1,1 @@
-export const host = "https://hback.herokuapp.com";
+export const host = "https://hyundaies-backend.herokuapp.com";
