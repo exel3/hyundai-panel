@@ -18,6 +18,7 @@ export const OptionsModal = ({
 			<div
 				className="optionsModalContainer"
 				onClick={(e) => handleShowOptions(e)}
+				onContextMenu={(e) => handleShowOptions(e)}
 			></div>
 			<style jsx>{`
 				.modal {

@@ -91,6 +91,11 @@ export const CustomDownDrop = ({
 				.optionItems {
 					cursor: pointer;
 					padding: 0;
+					width: 100%;
+					text-align: center;
+				}
+				.optionItems:hover {
+					background: rgba(0, 0, 0, 0.1);
 				}
 			`}</style>
 		</>

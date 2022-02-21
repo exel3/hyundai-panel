@@ -3,13 +3,21 @@ import Image from "next/image";
 
 type Prop = {
 	pic: StaticImageData;
+	rotate?: number;
 };
-const Logo = ({ pic }: Prop) => {
+const ImageWrapper = ({ pic, rotate = 0 }: Prop) => {
 	return (
 		<>
-			<Image src={pic} width={90} height={60} />
+			<div>
+				<Image src={pic} width={90} height={60} />
+			</div>
+			<style jsx>{`
+				div {
+					transform: rotate(${rotate}deg);
+				}
+			`}</style>
 		</>
 	);
 };
 
-export default React.memo(Logo);
+export default React.memo(ImageWrapper);
