@@ -1,11 +1,15 @@
 import { InputLabelFloat } from "components/atoms/InputLabelFloat";
 import React from "react";
 
-export const AddCategory = () => {
+type Prop = {
+	element?: any;
+};
+
+export const ModalCategory = ({ element }: Prop) => {
 	const isLoading = false;
 	return (
 		<>
-			<div>
+			<div className="inputsContainer">
 				<InputLabelFloat
 					name="categoryname"
 					type="text"
@@ -13,6 +17,7 @@ export const AddCategory = () => {
 					disabled={isLoading}
 					width="100%"
 					required
+					value={element && element.name}
 				>
 					Nombre
 				</InputLabelFloat>
@@ -22,6 +27,7 @@ export const AddCategory = () => {
 					disabled={isLoading}
 					width="100%"
 					required
+					value={element && element.abbreviation}
 				>
 					Abreviación
 				</InputLabelFloat>
@@ -31,6 +37,7 @@ export const AddCategory = () => {
 					disabled={isLoading}
 					width="100%"
 					required
+					value={element && element.idSecondary}
 				>
 					ID
 				</InputLabelFloat>
@@ -40,12 +47,13 @@ export const AddCategory = () => {
 					disabled={isLoading}
 					width="100%"
 					required
+					value={element && element.value}
 				>
 					Valor
 				</InputLabelFloat>
 			</div>
 			<style jsx>{`
-				div {
+				.inputsContainer {
 					width: 100%;
 				}
 			`}</style>

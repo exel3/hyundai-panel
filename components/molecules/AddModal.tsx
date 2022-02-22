@@ -3,13 +3,24 @@ import AddPic from "public/icons/addPic.svg";
 import { ButtonWithIcon } from "components/atoms/ButtonWithIcon";
 import { Title } from "components/atoms/Title";
 import { DefaultButton } from "components/atoms/DefaultButton";
+import { typeElement } from "types/global";
 
 type Props = {
 	children: ReactElement;
 	handleAddModal: Function;
 	title: string;
+	type: typeElement;
 };
-export const AddModal = ({ children, handleAddModal, title }: Props) => {
+
+const titulos = {
+	category: "categoria",
+	block: "bloque",
+	area: "area",
+	standard: "estandar",
+	criterion: "criterio",
+};
+
+export const AddModal = ({ children, handleAddModal, title, type }: Props) => {
 	const [isLoading, setMode] = useState(false);
 	const [error, setError] = useState([]);
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -25,7 +36,7 @@ export const AddModal = ({ children, handleAddModal, title }: Props) => {
 			<div className="optionsModalContainer">
 				<div className="modal">
 					<div className="header">
-						<Title fontsize="1.5rem">{title}</Title>
+						<Title fontsize="1.5rem">{`${title} ${titulos[type]}`}</Title>
 					</div>
 					<div className="closeBottom">
 						<ButtonWithIcon

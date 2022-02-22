@@ -8,14 +8,15 @@ import AddPic from "public/icons/AddPic.svg";
 import { AddModal } from "components/molecules/AddModal";
 import { useState } from "react";
 import Portal from "HOC/Portal";
-import { AddCategory } from "components/molecules/AddCategory";
+import { ModalCategory } from "components/molecules/ModalCategory";
 import { postCategory } from "services/categories/postCategory";
 import { DeleteModal } from "components/molecules/DeleteModal";
 
 export const EstandaresTemplate = () => {
 	const { categories, isLoading, isError } = useGetAllCategories();
-	const [showCategoryModal, setShowCategoryModal] = useState(false);
+	const [showAddModal, setAddModal] = useState(false);
 	const [showDeleteModal, setDeleteModal] = useState(false);
+	const [showEditModal, setEditModal] = useState(false);
 	const [elementSelected, setElement] = useState({});
 	const [typeSelected, setType] = useState<typeElement>("category");
 
@@ -31,21 +32,31 @@ export const EstandaresTemplate = () => {
 				isAgency: false,
 			};
 			return postCategory(newCategory)
-				.then((res) => setShowCategoryModal((prevState) => !prevState))
+				.then((res) => setAddModal((prevState) => !prevState))
 				.catch((e) => Promise.reject(e));
 		} else {
-			setShowCategoryModal((prevState) => !prevState);
+			setAddModal((prevState) => !prevState);
 		}
 	};
 
-	const optionAddCategory = (idCategory: string) => {};
-	const optionDeleteCategory = (element: any) => {
+	const optionAdd = (element: any) => {
+		setElement(element);
+		setType("category");
+		console.log("add", element);
+		setAddModal((prevState) => !prevState);
+	};
+	const optionDelete = (element: any) => {
 		setElement(element);
 		setType("category");
 		console.log("delete", element);
 		setDeleteModal((prevState) => !prevState);
 	};
-	const optionEditCategory = (idCategory: string) => {};
+	const optionEdit = (element: any) => {
+		setElement(element);
+		setType("category");
+		console.log("edit", element);
+		setEditModal((prevState) => !prevState);
+	};
 	return (
 		<>
 			<div className="estandaresContainer"></div>
@@ -61,9 +72,9 @@ export const EstandaresTemplate = () => {
 						<CustomDownDrop
 							key={category._id}
 							element={category}
-							optionAdd={optionDeleteCategory}
-							optionEdit={optionEditCategory}
-							optionDelete={optionDeleteCategory}
+							optionAdd={optionAdd}
+							optionEdit={optionEdit}
+							optionDelete={optionDelete}
 							title={(
 								category.abbreviation +
 								". " +
@@ -116,13 +127,25 @@ export const EstandaresTemplate = () => {
 				) : (
 					<Loading />
 				)}
-				{showCategoryModal && (
+				{showAddModal && (
 					<Portal>
 						<AddModal
 							handleAddModal={handleAddCategory}
-							title="Creación de nueva categoría"
+							title="Creación de"
+							type={typeSelected}
 						>
-							<AddCategory></AddCategory>
+							<ModalCategory></ModalCategory>
+						</AddModal>
+					</Portal>
+				)}
+				{showEditModal && (
+					<Portal>
+						<AddModal
+							handleAddModal={handleAddCategory}
+							title="Editar"
+							type={typeSelected}
+						>
+							<ModalCategory element={elementSelected}></ModalCategory>
 						</AddModal>
 					</Portal>
 				)}

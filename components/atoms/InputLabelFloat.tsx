@@ -9,6 +9,7 @@ type Prop = {
 	disabled?: boolean;
 	autoFocus?: boolean;
 	autoComplete?: "nope" | "on";
+	value?: string | number;
 };
 
 export const InputLabelFloat = ({
@@ -20,8 +21,9 @@ export const InputLabelFloat = ({
 	disabled = false,
 	autoFocus = false,
 	autoComplete = "nope",
+	value,
 }: Prop) => {
-	const [mode, setMode] = useState(false);
+	const [mode, setMode] = useState(value ? true : false);
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.target.value ? setMode(true) : setMode(false);
 	};
@@ -38,6 +40,7 @@ export const InputLabelFloat = ({
 					autoFocus={autoFocus}
 					onChange={handleInput}
 					autoComplete={autoComplete}
+					value={value && value}
 				/>
 				<label
 					htmlFor={"name"}
