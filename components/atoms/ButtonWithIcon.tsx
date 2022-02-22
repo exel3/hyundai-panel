@@ -4,11 +4,21 @@ type Prop = {
 	src: string;
 	handleClick: Function;
 	rotate?: number;
+	disabled?: boolean;
 };
-export const ButtonWithIcon = ({ src, handleClick, rotate = 0 }: Prop) => {
+export const ButtonWithIcon = ({
+	src,
+	handleClick,
+	rotate = 0,
+	disabled = false,
+}: Prop) => {
 	return (
 		<>
-			<button className="rotateX" onClick={() => handleClick()}>
+			<button
+				className="rotateX"
+				onClick={() => handleClick()}
+				disabled={disabled}
+			>
 				<Image src={src} width={30} height={30} />
 			</button>
 			<style jsx>{`

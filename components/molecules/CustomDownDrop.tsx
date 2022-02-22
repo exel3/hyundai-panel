@@ -8,12 +8,20 @@ type Props = {
 	title: string;
 	color: string;
 	childrenContainer?: boolean;
+	optionAdd: Function;
+	optionEdit: Function;
+	optionDelete: Function;
+	element: any;
 };
 export const CustomDownDrop = ({
 	children,
 	title,
 	color,
 	childrenContainer = true,
+	optionAdd,
+	optionEdit,
+	optionDelete,
+	element,
 }: Props) => {
 	const [expandedMode, setMode] = useState(false);
 	const [showOptions, setShowOptions] = useState(false);
@@ -58,9 +66,33 @@ export const CustomDownDrop = ({
 						left={mousePosition.x}
 					>
 						<>
-							<p className="optionItems">Eliminar concepto</p>
-							<p className="optionItems">Editar concepto</p>
-							<p className="optionItems">Duplicar concepto</p>
+							<p
+								className="optionItems"
+								onClick={() => {
+									setShowOptions(false);
+									optionAdd(element);
+								}}
+							>
+								Agregar contenido
+							</p>
+							<p
+								className="optionItems"
+								onClick={() => {
+									setShowOptions(false);
+									optionDelete(element);
+								}}
+							>
+								Eliminar
+							</p>
+							<p
+								className="optionItems"
+								onClick={() => {
+									setShowOptions(false);
+									optionEdit(element);
+								}}
+							>
+								Editar
+							</p>
 						</>
 					</OptionsModal>
 				</Portal>
@@ -91,7 +123,7 @@ export const CustomDownDrop = ({
 				.optionItems {
 					cursor: pointer;
 					padding: 0;
-					width: 100%;
+					height: 100%;
 					text-align: center;
 				}
 				.optionItems:hover {
